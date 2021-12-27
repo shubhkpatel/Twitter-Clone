@@ -3,7 +3,7 @@ import {
     HeartIcon as HeartIconFilled,
     ChatIcon as ChatIconFilled,
 } from "@heroicons/react/solid";
-import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot, orderBy, query, setDoc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -20,6 +20,18 @@ const Post = ({ id, post, postPage }) => {
     const [liked, setLiked] = useState(false);
     const [likes, setLikes] = useState([]);
     const router = useRouter();
+
+    useEffect(
+        () =>
+          onSnapshot(
+            query(
+              collection(db, "posts", id, "comments"),
+              orderBy("timestamp", "desc")
+            ),
+            (snapshot) => setComments(snapshot.docs)
+          ),
+        [db, id]
+      );
 
     useEffect(
         () =>
