@@ -60,9 +60,9 @@ const Input = () => {
         if (selectedFile) {
             await uploadString(imageRef, selectedFile, "data_url").then(async () => {
                 const downloadUrl = await getDownloadURL(imageRef);
-                await updateDoc(doc(db, "posts", docRef.id, {
+                await updateDoc(doc(db, "posts", docRef.id), {
                     image: downloadUrl,
-                }))
+                })
             })
         }
 
