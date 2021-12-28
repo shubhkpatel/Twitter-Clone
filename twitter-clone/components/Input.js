@@ -73,7 +73,7 @@ const Input = () => {
     };
 
     return (
-        <div className={`border-b border-gray-700 p-3 flex space-x-3 scrollbar-hide ${loading && "opacity-60"}`}>
+        <div className={`border-b border-gray-700 p-3 flex space-x-3 ${loading && "opacity-60"}`}>
             <img className="h-11 w-11 rounded-full cursor-pointer" src={session.user.image} alt="" />
 
             <div className="w-full divide-y divide-gray-700">
@@ -84,7 +84,7 @@ const Input = () => {
                         onChange={(e) => (setInput(e.target.value))}
                         rows="2"
                         placeholder="What's happening?"
-                        className="bg-transparent outline-none text-[#d9d9d9] text-lg placeholder-gray-500 tracking-wide w-full min-h-[50px]"
+                        className="scrollbar-hide bg-transparent outline-none text-[#d9d9d9] text-lg placeholder-gray-500 tracking-wide w-full min-h-[50px]"
                     />
 
                     {selectedFile && (
