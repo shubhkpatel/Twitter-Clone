@@ -73,7 +73,7 @@ const Input = () => {
     };
 
     return (
-        <div className={`border-b border-gray-700 p-3 flex space-x-3 overflow-y-scroll ${loading && "opacity-60"}`}>
+        <div className={`border-b border-gray-700 p-3 flex space-x-3 scrollbar-hide ${loading && "opacity-60"}`}>
             <img className="h-11 w-11 rounded-full cursor-pointer" src={session.user.image} alt="" />
 
             <div className="w-full divide-y divide-gray-700">
